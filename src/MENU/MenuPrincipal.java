@@ -101,6 +101,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         confPass = new javax.swing.JTextField();
         backToLogin = new javax.swing.JButton();
+        LOG_IN = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        usLogin = new javax.swing.JTextField();
+        passLogin = new javax.swing.JTextField();
+        checkOut = new javax.swing.JButton();
+        reg = new javax.swing.JButton();
         PLAY_TAB = new javax.swing.JPanel();
         usersListSc = new javax.swing.JScrollPane();
         usersList = new javax.swing.JList<>();
@@ -121,13 +128,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         rem2 = new javax.swing.JButton();
         rem3 = new javax.swing.JButton();
         backToMenu = new javax.swing.JButton();
-        LOG_IN = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        usLogin = new javax.swing.JTextField();
-        passLogin = new javax.swing.JTextField();
-        checkOut = new javax.swing.JButton();
-        reg = new javax.swing.JButton();
         CONFIG_TAB = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         cantPCombo = new javax.swing.JComboBox<>();
@@ -219,8 +219,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         fullName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         REG_TAB.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, 550, 80));
 
+        Reg_Checkout.setBackground(new java.awt.Color(255, 255, 255));
         Reg_Checkout.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        Reg_Checkout.setForeground(new java.awt.Color(255, 255, 255));
+        Reg_Checkout.setForeground(new java.awt.Color(0, 0, 0));
         Reg_Checkout.setText("REGISTRARSE");
         Reg_Checkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,6 +247,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         REG_TAB.add(backToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1550, 970, 330, 90));
+
+        LOG_IN.setBackground(new java.awt.Color(51, 0, 0));
+        LOG_IN.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        LOG_IN.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("USUARIO");
+        LOG_IN.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 230, 100));
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("CONTRASEñA");
+        LOG_IN.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 230, 100));
+
+        usLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        usLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LOG_IN.add(usLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 550, 80));
+
+        passLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        passLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        LOG_IN.add(passLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 550, 80));
+
+        checkOut.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        checkOut.setText("INICIAR SESION");
+        checkOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutActionPerformed(evt);
+            }
+        });
+        LOG_IN.add(checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 690, 330, 90));
+
+        reg.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        reg.setText("REGISTRARME");
+        reg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regActionPerformed(evt);
+            }
+        });
+        LOG_IN.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 690, 310, 80));
 
         PLAY_TAB.setBackground(new java.awt.Color(51, 0, 0));
         PLAY_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -363,44 +406,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         PLAY_TAB.add(backToMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1550, 960, 330, 90));
-
-        LOG_IN.setBackground(new java.awt.Color(51, 0, 0));
-        LOG_IN.setPreferredSize(new java.awt.Dimension(1920, 1080));
-        LOG_IN.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        jLabel9.setText("USUARIO");
-        LOG_IN.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 230, 100));
-
-        jLabel10.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        jLabel10.setText("CONTRASEñA");
-        LOG_IN.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 230, 100));
-
-        usLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        usLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LOG_IN.add(usLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 420, 550, 80));
-
-        passLogin.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        passLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        LOG_IN.add(passLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 540, 550, 80));
-
-        checkOut.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        checkOut.setText("INICIAR SESION");
-        checkOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkOutActionPerformed(evt);
-            }
-        });
-        LOG_IN.add(checkOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 690, 330, 90));
-
-        reg.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
-        reg.setText("REGISTRARME");
-        reg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regActionPerformed(evt);
-            }
-        });
-        LOG_IN.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 690, 310, 80));
 
         CONFIG_TAB.setBackground(new java.awt.Color(51, 0, 0));
         CONFIG_TAB.setPreferredSize(new java.awt.Dimension(1920, 1080));
