@@ -80,7 +80,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         this.cantCards.setText(deckTK.deck.size() + "");
         timerThread = new Thread(this);
         timerThread.start();
-        cementerio.setIcon(imageResizer("cardBack.png",cementerio));
+        cementerio.setIcon(imageResizer("cardBack.png", cementerio));
 
     }
 
@@ -929,7 +929,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         while (true) {
             if (boardManager.SEQUENCE) {
                 timerThread = null;
-                victory gane = new victory(boardManager.WINNER,boardManager.teamWin);
+                victory gane = new victory(boardManager.WINNER, boardManager.teamWin);
                 gane.setVisible(true);
                 this.dispose();
                 break;
@@ -987,7 +987,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
             deckTK.initBARAJA(BARAJA);
         }
 
-        this.deckTK.robarCarta(BARAJA,cementerio);
+        this.deckTK.robarCarta(BARAJA, cementerio);
         turnarEntreEquipos();
         turnarInternamente();
         Mazo.setManojo(this.leftManojo, this.rightManojo, this.BottomManojo, enTurno);
@@ -1055,8 +1055,13 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         equipoTurn++;
     }
 
-    private void showPlayerCards() {
-
+    private void showPlayerCards(JPanel team, ArrayList<Usuario> players) {
+        ArrayList<JPanel> panels = this.stripPanels(team);
+        for (int i = 0; i < players.size(); i++) {
+            ArrayList<JLabel> currentPanelLabels = this.stripLabels(panels.get(i));
+            this.setInfo(currentPanelLabels.get(0), players.get(i));
+            
+        }
     }
 
     private ArrayList<JLabel> stripLabels(JPanel panel) {
@@ -1069,44 +1074,61 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         return labels;
     }
 
+    private ArrayList<JPanel> stripPanels(JPanel panel) {
+        ArrayList<JPanel> panels = new ArrayList();
+        for (Component panelito : panel.getComponents()) {
+            if (panelito instanceof JPanel) {
+                panels.add((JPanel) panelito);
+            }
+        }
+        return panels;
+    }
+
+    private void setInfo(JLabel label, Usuario player) {
+
+        if (label.getText().equals("NAME")) {
+            label.setText(player.getUsername());
+        }
+       
+    }
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    new BOARD().setVisible(true);
-//                } catch (IOException | ClassNotFoundException ex) {
-//                    System.out.println(ex.getMessage());
-//                }
-//            }
-//        });
-//    }
+    //    public static void main(String args[]) {
+    //        /* Set the Nimbus look and feel */
+    //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    //        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    //         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+    //         */
+    //        try {
+    //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+    //                if ("Nimbus".equals(info.getName())) {
+    //                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    //                    break;
+    //                }
+    //            }
+    //        } catch (ClassNotFoundException ex) {
+    //            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //        } catch (InstantiationException ex) {
+    //            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //        } catch (IllegalAccessException ex) {
+    //            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+    //            java.util.logging.Logger.getLogger(BOARD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    //        }
+    //        //</editor-fold>
+    //
+    //        /* Create and display the form */
+    //        java.awt.EventQueue.invokeLater(new Runnable() {
+    //            public void run() {
+    //                try {
+    //                    new BOARD().setVisible(true);
+    //                } catch (IOException | ClassNotFoundException ex) {
+    //                    System.out.println(ex.getMessage());
+    //                }
+    //            }
+    //        });
+    //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel B1;

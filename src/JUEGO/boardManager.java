@@ -126,6 +126,7 @@ public class boardManager {
                                     this.TwoEyeJackAction(Mazo.auxLastPcard, board[Fila][Columna]);
                                 } else {
                                     JOptionPane.showMessageDialog(null, "NO PUEDE BLOQUEAR UNA CASILLA OCUPADA");
+                                    return;
                                 }
                             }
                              Mazo.canPlaceToken = false;
@@ -133,10 +134,12 @@ public class boardManager {
                             JOptionPane.showMessageDialog(null, "SELECCIONE LA CASILLA SEÑALADA");
                             return;
                         }
-                        BOARD.baraja.doClick();
+                       
                     } else {
                         JOptionPane.showMessageDialog(null, "SELECCIONE UNA CARTA DE SU MANOJO");
+                        return;
                     }
+                     BOARD.baraja.doClick();
                 }
                 );
 
@@ -253,6 +256,8 @@ public class boardManager {
     private void TwoEyeJackAction(JButton lastCard, cartita boardButton) {
         if (getJackEye(lastCard) == 2) {
             boardButton.setEnabled(false);
+            boardButton.setTakenBy(BOARD.enTurno.getUsername());
+            boardButton.setTeam(BOARD.enTurno.getTeam());
         }
 
     }
@@ -263,6 +268,7 @@ public class boardManager {
         boardB.setAlreadySequenced(false);
         boardB.setChecked(false);
         boardB.getFichita().setIcon(null);
+        Mazo.canPlaceToken=false;
     }
 
     //EL INFAME "GANE"
