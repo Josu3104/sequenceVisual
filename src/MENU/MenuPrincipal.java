@@ -142,7 +142,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         backToMENU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
         setSize(new java.awt.Dimension(1920, 1080));
 
@@ -151,6 +150,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MAIN_MENU.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PLAY.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        PLAY.setForeground(new java.awt.Color(255, 255, 255));
         PLAY.setText("JUGAR");
         PLAY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +160,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MAIN_MENU.add(PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 330, 90));
 
         config.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        config.setForeground(new java.awt.Color(255, 255, 255));
         config.setText("CONFIGURACION");
         config.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +170,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MAIN_MENU.add(config, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 330, 90));
 
         reportes.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        reportes.setForeground(new java.awt.Color(255, 255, 255));
         reportes.setText("REPORTES");
         reportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,14 +193,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         REG_TAB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("NOMBRE COMPLETO");
         REG_TAB.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 350, 100));
 
         jLabel2.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USUARIO");
         REG_TAB.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, 230, 100));
 
         jLabel3.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CONTRASEñA");
         REG_TAB.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 540, 230, 100));
 
@@ -215,6 +220,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         REG_TAB.add(fullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, 550, 80));
 
         Reg_Checkout.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        Reg_Checkout.setForeground(new java.awt.Color(255, 255, 255));
         Reg_Checkout.setText("REGISTRARSE");
         Reg_Checkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +230,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         REG_TAB.add(Reg_Checkout, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 780, 330, 90));
 
         jLabel7.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("CONFIRMAR CONTRASEñA");
         REG_TAB.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 640, 430, 100));
 
@@ -400,6 +407,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CONFIG_TAB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Ravie", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CANTIDAD DE JUGADORES");
         CONFIG_TAB.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 850, 90));
 
@@ -431,11 +439,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         REPORTS_TAB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         playerDispReports.setFont(new java.awt.Font("Ravie", 0, 36)); // NOI18N
+        playerDispReports.setForeground(new java.awt.Color(255, 255, 255));
         playerDispReports.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         playerDispReports.setText("JUGADOR");
         REPORTS_TAB.add(playerDispReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 780, 70));
 
         dateCreatedReports.setFont(new java.awt.Font("Ravie", 0, 36)); // NOI18N
+        dateCreatedReports.setForeground(new java.awt.Color(255, 255, 255));
         dateCreatedReports.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         dateCreatedReports.setText("Registrado en");
         REPORTS_TAB.add(dateCreatedReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 620, 70));
@@ -449,6 +459,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         REPORTS_TAB.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 160, 1110, 770));
 
         misc.setFont(new java.awt.Font("Ravie", 0, 48)); // NOI18N
+        misc.setForeground(new java.awt.Color(255, 255, 255));
         misc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         misc.setText("HISTORIAL DE JUEGO");
         REPORTS_TAB.add(misc, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 80, 670, 70));
