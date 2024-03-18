@@ -479,18 +479,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(LOG_IN, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(CONFIG_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addComponent(CONFIG_TAB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 5, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(REPORTS_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 7, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,18 +504,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(LOG_IN, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(CONFIG_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addComponent(CONFIG_TAB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 6, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(REPORTS_TAB, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 6, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -551,10 +545,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         usersList.setModel(model);
 
-        if (cantPlayersSettings == 3 || cantPlayersSettings == 6) {
+        if (cantEquipos == 3) {
             EQUIPO3.setVisible(true);
             playersThreeSc.setVisible(true);
             tokenColor3.setVisible(true);
+            rem3.setVisible(true);
+        }else{
+             EQUIPO3.setVisible(false);
+            playersThreeSc.setVisible(false);
+            tokenColor3.setVisible(false);
             rem3.setVisible(false);
         }
 
@@ -771,7 +770,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setRealTeams() throws IOException, ClassNotFoundException {
         setRealTeams(p1, team1, 1);
         setRealTeams(p2, team2, 2);
-        setRealTeams(p3, team3, 3);
+        if(cantEquipos==3){
+             setRealTeams(p3, team3, 3);
+        }
+       
     }
 
     private void setRealTeams(ArrayList<String> players, ArrayList<Usuario> realTeam, int team) throws IOException, ClassNotFoundException {
@@ -810,6 +812,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String item = (String) this.cantPCombo.getSelectedItem();
         int cant = Integer.parseInt(item);
         cantPlayersSettings = cant;
+        if(cantPlayersSettings ==3||cantPlayersSettings==6){
+            cantEquipos=3;
+        }else{
+            cantEquipos=2;
+        }
         setCantJugadores.setBackground(Color.GREEN);
         System.out.println("CANT JUGADORES : " + cantPlayersSettings);
 

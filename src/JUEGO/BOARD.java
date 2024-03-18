@@ -106,7 +106,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        point1 = new javax.swing.JLabel();
         L2 = new javax.swing.JPanel();
         name_L2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -117,7 +117,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        point2 = new javax.swing.JLabel();
         L3 = new javax.swing.JPanel();
         name_L3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -128,7 +128,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        point3 = new javax.swing.JLabel();
         L4 = new javax.swing.JPanel();
         name_L4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -139,7 +139,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
+        point4 = new javax.swing.JLabel();
         barBottom = new javax.swing.JPanel();
         B1 = new javax.swing.JPanel();
         name_L9 = new javax.swing.JLabel();
@@ -151,7 +151,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel47 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
-        jLabel146 = new javax.swing.JLabel();
+        pointB1 = new javax.swing.JLabel();
         B2 = new javax.swing.JPanel();
         name_L10 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -162,7 +162,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel151 = new javax.swing.JLabel();
         jLabel152 = new javax.swing.JLabel();
         jLabel153 = new javax.swing.JLabel();
-        jLabel154 = new javax.swing.JLabel();
+        pointB2 = new javax.swing.JLabel();
         barRight = new javax.swing.JPanel();
         R1 = new javax.swing.JPanel();
         name_L5 = new javax.swing.JLabel();
@@ -174,7 +174,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
+        pointR1 = new javax.swing.JLabel();
         R2 = new javax.swing.JPanel();
         name_L6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -185,7 +185,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
+        pointR2 = new javax.swing.JLabel();
         R3 = new javax.swing.JPanel();
         name_L7 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -196,7 +196,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel61 = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
+        pointR3 = new javax.swing.JLabel();
         R4 = new javax.swing.JPanel();
         name_L8 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -207,7 +207,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel70 = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
         jLabel72 = new javax.swing.JLabel();
-        jLabel73 = new javax.swing.JLabel();
+        pointR4 = new javax.swing.JLabel();
         rightManojo = new javax.swing.JPanel();
         r7 = new javax.swing.JButton();
         r3 = new javax.swing.JButton();
@@ -298,9 +298,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         L1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 240, 100));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setText("PUNTOS");
-        L1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        point1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        point1.setText("PUNTOS");
+        L1.add(point1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barLeft.add(L1);
 
@@ -338,8 +338,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         L2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel19.setText("PUNTOS");
-        L2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        point2.setText("PUNTOS");
+        L2.add(point2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barLeft.add(L2);
 
@@ -377,8 +377,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         L3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel28.setText("PUNTOS");
-        L3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        point3.setText("PUNTOS");
+        L3.add(point3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barLeft.add(L3);
 
@@ -416,8 +416,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         L4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel37.setText("PUNTOS");
-        L4.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        point4.setText("PUNTOS");
+        L4.add(point4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barLeft.add(L4);
 
@@ -467,9 +467,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         B1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel146.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel146.setText("PUNTOS");
-        B1.add(jLabel146, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        pointB1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pointB1.setText("PUNTOS");
+        B1.add(pointB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barBottom.add(B1);
 
@@ -507,8 +507,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         B2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel154.setText("PUNTOS");
-        B2.add(jLabel154, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        pointB2.setText("PUNTOS");
+        B2.add(pointB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barBottom.add(B2);
 
@@ -558,9 +558,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         R1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 240, 100));
 
-        jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel46.setText("PUNTOS");
-        R1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        pointR1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        pointR1.setText("PUNTOS");
+        R1.add(pointR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barRight.add(R1);
 
@@ -598,8 +598,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         R2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel55.setText("PUNTOS");
-        R2.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        pointR2.setText("PUNTOS");
+        R2.add(pointR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barRight.add(R2);
 
@@ -637,8 +637,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         R3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel64.setText("PUNTOS");
-        R3.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        pointR3.setText("PUNTOS");
+        R3.add(pointR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barRight.add(R3);
 
@@ -676,8 +676,8 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
 
         R4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
 
-        jLabel73.setText("PUNTOS");
-        R4.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        pointR4.setText("PUNTOS");
+        R4.add(pointR4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
 
         barRight.add(R4);
 
@@ -995,6 +995,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         this.cantCards.setText(deckTK.deck.size() + "");
         min = 1;
         sec = 59;
+        boardManager.cleanBorders(boardManager.board);
 
     }//GEN-LAST:event_BARAJAActionPerformed
 
@@ -1133,12 +1134,10 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel cantCards;
     private javax.swing.JButton cementerio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel146;
     private javax.swing.JLabel jLabel147;
     private javax.swing.JLabel jLabel148;
     private javax.swing.JLabel jLabel149;
@@ -1147,11 +1146,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel151;
     private javax.swing.JLabel jLabel152;
     private javax.swing.JLabel jLabel153;
-    private javax.swing.JLabel jLabel154;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1161,7 +1158,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1171,7 +1167,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -1181,7 +1176,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -1191,7 +1185,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
@@ -1201,7 +1194,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
@@ -1211,7 +1203,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1244,6 +1235,16 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel name_L7;
     private javax.swing.JLabel name_L8;
     private javax.swing.JLabel name_L9;
+    private javax.swing.JLabel point1;
+    private javax.swing.JLabel point2;
+    private javax.swing.JLabel point3;
+    private javax.swing.JLabel point4;
+    private javax.swing.JLabel pointB1;
+    private javax.swing.JLabel pointB2;
+    private javax.swing.JLabel pointR1;
+    private javax.swing.JLabel pointR2;
+    private javax.swing.JLabel pointR3;
+    private javax.swing.JLabel pointR4;
     private javax.swing.JButton r1;
     private javax.swing.JButton r2;
     private javax.swing.JButton r3;

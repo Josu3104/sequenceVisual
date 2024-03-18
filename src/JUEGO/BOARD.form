@@ -175,7 +175,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="point1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -269,7 +269,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="point2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>
@@ -360,7 +360,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel28">
+                <Component class="javax.swing.JLabel" name="point3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>
@@ -451,7 +451,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel37">
+                <Component class="javax.swing.JLabel" name="point4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>
@@ -583,7 +583,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel146">
+                <Component class="javax.swing.JLabel" name="pointB1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -677,7 +677,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel154">
+                <Component class="javax.swing.JLabel" name="pointB2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>
@@ -809,7 +809,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel46">
+                <Component class="javax.swing.JLabel" name="pointR1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -903,7 +903,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel55">
+                <Component class="javax.swing.JLabel" name="pointR2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>
@@ -994,7 +994,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel64">
+                <Component class="javax.swing.JLabel" name="pointR3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>
@@ -1085,7 +1085,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel73">
+                <Component class="javax.swing.JLabel" name="pointR4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PUNTOS"/>
                   </Properties>

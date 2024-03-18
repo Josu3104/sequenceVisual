@@ -203,6 +203,7 @@ public class Mazo {
 
                         String cutName = name.substring(0, name.lastIndexOf('.'));
                         //AL TOCAR LA CARTA, SE RESALTAN TODAS SUS ITERACIONES EN EL TABLERO
+
                         for (int row = 0; row < boardManager.board.length; row++) {
                             for (int col = 0; col < boardManager.board.length; col++) {
 
@@ -244,7 +245,7 @@ public class Mazo {
     }
 // TOMAR UNA CARTA DE LA BARAJA ANTES DEL SIGUIENTE TURNO
 
-    public void robarCarta(JButton baraja,JButton cementerio) {
+    public void robarCarta(JButton baraja, JButton cementerio) {
         String cartaSeleccionada = auxLastPcard.getName();
         String cartaActualBaraja = baraja.getName();
 
@@ -254,15 +255,15 @@ public class Mazo {
         auxLastPcard.setIcon(imageResizer("MANOJO/" + cartaActualBaraja, auxLastPcard));
         auxLastPcard.setName(cartaActualBaraja);
 
-        this.mandarAlCementerio(cementerio,cartaSeleccionada);
+        this.mandarAlCementerio(cementerio, cartaSeleccionada);
         removeCardFromBaraja(cartaActualBaraja);
         this.initBARAJA(baraja);
 
         auxLastPcard = null;
     }
 
-    private void mandarAlCementerio(JButton cement ,String carta) {
-        cement.setIcon(imageResizer("MANOJO/"+carta,cement));
+    private void mandarAlCementerio(JButton cement, String carta) {
+        cement.setIcon(imageResizer("MANOJO/" + carta, cement));
     }
 
     private void removeCardFromUserArray(String carta) {
