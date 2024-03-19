@@ -7,11 +7,16 @@ package JUEGO;
 
 import static JUEGO.Mazo.imageResizer;
 import MENU.MenuPrincipal;
+import static MENU.MenuPrincipal.cantEquipos;
 import USUARIO.Usuario;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,7 +37,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     boolean timesUp = false;
     boardManager boardTK;
     Mazo deckTK;
-    public static JPanel[] left, bottom, right;
+    public static JPanel left, bottom, right;
     public static Usuario enTurno;
     public static int equipoTurn = 1;
     public static int cont = 0;
@@ -50,9 +55,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         tablero.setLocation(330, 190);
         boardTK.initPlayerCards(barLeft, barRight, barBottom);
 
-        left = new JPanel[]{L1, L2, L2, L3, L4};
-        right = new JPanel[]{R1, R2, R3, R4};
-        bottom = new JPanel[]{B1, B2};
+        left = this.barLeft;
+        right = this.barRight;
+        bottom = this.barBottom;
         baraja = BARAJA;
 
         this.leftManojo.setVisible(true);
@@ -81,6 +86,13 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         timerThread = new Thread(this);
         timerThread.start();
         cementerio.setIcon(imageResizer("cardBack.png", cementerio));
+        this.showPlayerCards();
+        this.HighlightPlayer();
+        if(cantEquipos==3){
+            this.TITLE3.setVisible(true);
+        }else{
+            this.TITLE3.setVisible(false);
+        }
 
     }
 
@@ -98,116 +110,26 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         barLeft = new javax.swing.JPanel();
         L1 = new javax.swing.JPanel();
         name_L1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        point1 = new javax.swing.JLabel();
         L2 = new javax.swing.JPanel();
         name_L2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        point2 = new javax.swing.JLabel();
         L3 = new javax.swing.JPanel();
         name_L3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        point3 = new javax.swing.JLabel();
         L4 = new javax.swing.JPanel();
         name_L4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        point4 = new javax.swing.JLabel();
         barBottom = new javax.swing.JPanel();
         B1 = new javax.swing.JPanel();
         name_L9 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
-        pointB1 = new javax.swing.JLabel();
         B2 = new javax.swing.JPanel();
         name_L10 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel147 = new javax.swing.JLabel();
-        jLabel148 = new javax.swing.JLabel();
-        jLabel149 = new javax.swing.JLabel();
-        jLabel150 = new javax.swing.JLabel();
-        jLabel151 = new javax.swing.JLabel();
-        jLabel152 = new javax.swing.JLabel();
-        jLabel153 = new javax.swing.JLabel();
-        pointB2 = new javax.swing.JLabel();
         barRight = new javax.swing.JPanel();
         R1 = new javax.swing.JPanel();
         name_L5 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        pointR1 = new javax.swing.JLabel();
         R2 = new javax.swing.JPanel();
         name_L6 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        pointR2 = new javax.swing.JLabel();
         R3 = new javax.swing.JPanel();
         name_L7 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
-        pointR3 = new javax.swing.JLabel();
         R4 = new javax.swing.JPanel();
         name_L8 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel67 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
-        jLabel72 = new javax.swing.JLabel();
-        pointR4 = new javax.swing.JLabel();
         rightManojo = new javax.swing.JPanel();
         r7 = new javax.swing.JButton();
         r3 = new javax.swing.JButton();
@@ -241,6 +163,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         cementerio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel74 = new javax.swing.JLabel();
+        TITLE1 = new javax.swing.JLabel();
+        TITLE2 = new javax.swing.JLabel();
+        TITLE3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -255,433 +180,149 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jPanel1.add(tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 810, 880));
 
         barLeft.setBackground(new java.awt.Color(51, 0, 0));
-        barLeft.setLayout(new java.awt.GridLayout(4, 0, 0, 40));
+        barLeft.setLayout(new java.awt.GridLayout(4, 0, 0, 120));
 
-        L1.setBackground(new java.awt.Color(0, 102, 102));
+        L1.setBackground(new java.awt.Color(0, 51, 51));
         L1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         L1.setPreferredSize(new java.awt.Dimension(65, 540));
         L1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L1.setForeground(new java.awt.Color(255, 255, 255));
         name_L1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L1.setText("NAME");
-        L1.add(name_L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("AAAAAAA");
-        jPanel2.add(jLabel3);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("AAAAAAA");
-        jPanel2.add(jLabel4);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("AAAAAAA");
-        jPanel2.add(jLabel5);
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("AAAAAAA");
-        jPanel2.add(jLabel6);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("AAAAAAA");
-        jPanel2.add(jLabel7);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setText("AAAAAAA");
-        jPanel2.add(jLabel8);
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("AAAAAAA");
-        jPanel2.add(jLabel9);
-
-        L1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 240, 100));
-
-        point1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        point1.setText("PUNTOS");
-        L1.add(point1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        L1.add(name_L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barLeft.add(L1);
 
-        L2.setBackground(new java.awt.Color(0, 102, 102));
+        L2.setBackground(new java.awt.Color(0, 51, 51));
         L2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         L2.setPreferredSize(new java.awt.Dimension(65, 540));
         L2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L2.setForeground(new java.awt.Color(255, 255, 255));
         name_L2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L2.setText("NAME");
-        L2.add(name_L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel3.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel12.setText("AAAAAAA");
-        jPanel3.add(jLabel12);
-
-        jLabel13.setText("AAAAAAA");
-        jPanel3.add(jLabel13);
-
-        jLabel14.setText("AAAAAAA");
-        jPanel3.add(jLabel14);
-
-        jLabel15.setText("AAAAAAA");
-        jPanel3.add(jLabel15);
-
-        jLabel16.setText("AAAAAAA");
-        jPanel3.add(jLabel16);
-
-        jLabel17.setText("AAAAAAA");
-        jPanel3.add(jLabel17);
-
-        jLabel18.setText("AAAAAAA");
-        jPanel3.add(jLabel18);
-
-        L2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        point2.setText("PUNTOS");
-        L2.add(point2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        L2.add(name_L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barLeft.add(L2);
 
-        L3.setBackground(new java.awt.Color(0, 102, 102));
+        L3.setBackground(new java.awt.Color(0, 51, 51));
         L3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         L3.setPreferredSize(new java.awt.Dimension(65, 540));
         L3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L3.setForeground(new java.awt.Color(255, 255, 255));
         name_L3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L3.setText("NAME");
-        L3.add(name_L3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel4.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel21.setText("AAAAAAA");
-        jPanel4.add(jLabel21);
-
-        jLabel22.setText("AAAAAAA");
-        jPanel4.add(jLabel22);
-
-        jLabel23.setText("AAAAAAA");
-        jPanel4.add(jLabel23);
-
-        jLabel24.setText("AAAAAAA");
-        jPanel4.add(jLabel24);
-
-        jLabel25.setText("AAAAAAA");
-        jPanel4.add(jLabel25);
-
-        jLabel26.setText("AAAAAAA");
-        jPanel4.add(jLabel26);
-
-        jLabel27.setText("AAAAAAA");
-        jPanel4.add(jLabel27);
-
-        L3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        point3.setText("PUNTOS");
-        L3.add(point3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        L3.add(name_L3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barLeft.add(L3);
 
-        L4.setBackground(new java.awt.Color(0, 102, 102));
+        L4.setBackground(new java.awt.Color(0, 51, 51));
         L4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         L4.setPreferredSize(new java.awt.Dimension(65, 540));
         L4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L4.setForeground(new java.awt.Color(255, 255, 255));
         name_L4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L4.setText("NAME");
-        L4.add(name_L4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel5.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel30.setText("AAAAAAA");
-        jPanel5.add(jLabel30);
-
-        jLabel31.setText("AAAAAAA");
-        jPanel5.add(jLabel31);
-
-        jLabel32.setText("AAAAAAA");
-        jPanel5.add(jLabel32);
-
-        jLabel33.setText("AAAAAAA");
-        jPanel5.add(jLabel33);
-
-        jLabel34.setText("AAAAAAA");
-        jPanel5.add(jLabel34);
-
-        jLabel35.setText("AAAAAAA");
-        jPanel5.add(jLabel35);
-
-        jLabel36.setText("AAAAAAA");
-        jPanel5.add(jLabel36);
-
-        L4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        point4.setText("PUNTOS");
-        L4.add(point4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        L4.add(name_L4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barLeft.add(L4);
 
-        jPanel1.add(barLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 240, 760));
+        jPanel1.add(barLeft, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 240, 600));
 
         barBottom.setBackground(new java.awt.Color(51, 0, 0));
-        barBottom.setLayout(new java.awt.GridLayout(1, 2, 30, 0));
+        barBottom.setLayout(new java.awt.GridLayout(1, 2, 20, 0));
 
-        B1.setBackground(new java.awt.Color(0, 102, 102));
+        B1.setBackground(new java.awt.Color(0, 51, 51));
         B1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         B1.setPreferredSize(new java.awt.Dimension(65, 540));
         B1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L9.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L9.setForeground(new java.awt.Color(255, 255, 255));
         name_L9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L9.setText("NAME");
-        B1.add(name_L9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel6.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setText("AAAAAAA");
-        jPanel6.add(jLabel11);
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel20.setText("AAAAAAA");
-        jPanel6.add(jLabel20);
-
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel29.setText("AAAAAAA");
-        jPanel6.add(jLabel29);
-
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel38.setText("AAAAAAA");
-        jPanel6.add(jLabel38);
-
-        jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel47.setText("AAAAAAA");
-        jPanel6.add(jLabel47);
-
-        jLabel56.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel56.setText("AAAAAAA");
-        jPanel6.add(jLabel56);
-
-        jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel65.setText("AAAAAAA");
-        jPanel6.add(jLabel65);
-
-        B1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        pointB1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        pointB1.setText("PUNTOS");
-        B1.add(pointB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        B1.add(name_L9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 60));
 
         barBottom.add(B1);
 
-        B2.setBackground(new java.awt.Color(0, 102, 102));
+        B2.setBackground(new java.awt.Color(0, 51, 51));
         B2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         B2.setPreferredSize(new java.awt.Dimension(65, 540));
         B2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L10.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L10.setForeground(new java.awt.Color(255, 255, 255));
         name_L10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L10.setText("NAME");
-        B2.add(name_L10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel7.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel147.setText("AAAAAAA");
-        jPanel7.add(jLabel147);
-
-        jLabel148.setText("AAAAAAA");
-        jPanel7.add(jLabel148);
-
-        jLabel149.setText("AAAAAAA");
-        jPanel7.add(jLabel149);
-
-        jLabel150.setText("AAAAAAA");
-        jPanel7.add(jLabel150);
-
-        jLabel151.setText("AAAAAAA");
-        jPanel7.add(jLabel151);
-
-        jLabel152.setText("AAAAAAA");
-        jPanel7.add(jLabel152);
-
-        jLabel153.setText("AAAAAAA");
-        jPanel7.add(jLabel153);
-
-        B2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        pointB2.setText("PUNTOS");
-        B2.add(pointB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        B2.add(name_L10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 60));
 
         barBottom.add(B2);
 
-        jPanel1.add(barBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 910, 510, 160));
+        jPanel1.add(barBottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 960, 510, 65));
 
         barRight.setBackground(new java.awt.Color(51, 0, 0));
-        barRight.setLayout(new java.awt.GridLayout(4, 0, 0, 40));
+        barRight.setLayout(new java.awt.GridLayout(4, 0, 0, 120));
 
-        R1.setBackground(new java.awt.Color(0, 102, 102));
+        R1.setBackground(new java.awt.Color(0, 51, 51));
         R1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         R1.setPreferredSize(new java.awt.Dimension(65, 540));
         R1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L5.setForeground(new java.awt.Color(255, 255, 255));
         name_L5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L5.setText("NAME");
-        R1.add(name_L5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel8.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel39.setText("AAAAAAA");
-        jPanel8.add(jLabel39);
-
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel40.setText("AAAAAAA");
-        jPanel8.add(jLabel40);
-
-        jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel41.setText("AAAAAAA");
-        jPanel8.add(jLabel41);
-
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel42.setText("AAAAAAA");
-        jPanel8.add(jLabel42);
-
-        jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel43.setText("AAAAAAA");
-        jPanel8.add(jLabel43);
-
-        jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel44.setText("AAAAAAA");
-        jPanel8.add(jLabel44);
-
-        jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel45.setText("AAAAAAA");
-        jPanel8.add(jLabel45);
-
-        R1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 240, 100));
-
-        pointR1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        pointR1.setText("PUNTOS");
-        R1.add(pointR1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        R1.add(name_L5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barRight.add(R1);
 
-        R2.setBackground(new java.awt.Color(0, 102, 102));
+        R2.setBackground(new java.awt.Color(0, 51, 51));
         R2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         R2.setPreferredSize(new java.awt.Dimension(65, 540));
         R2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L6.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L6.setForeground(new java.awt.Color(255, 255, 255));
         name_L6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L6.setText("NAME");
-        R2.add(name_L6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel9.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel48.setText("AAAAAAA");
-        jPanel9.add(jLabel48);
-
-        jLabel49.setText("AAAAAAA");
-        jPanel9.add(jLabel49);
-
-        jLabel50.setText("AAAAAAA");
-        jPanel9.add(jLabel50);
-
-        jLabel51.setText("AAAAAAA");
-        jPanel9.add(jLabel51);
-
-        jLabel52.setText("AAAAAAA");
-        jPanel9.add(jLabel52);
-
-        jLabel53.setText("AAAAAAA");
-        jPanel9.add(jLabel53);
-
-        jLabel54.setText("AAAAAAA");
-        jPanel9.add(jLabel54);
-
-        R2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        pointR2.setText("PUNTOS");
-        R2.add(pointR2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        R2.add(name_L6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barRight.add(R2);
 
-        R3.setBackground(new java.awt.Color(0, 102, 102));
+        R3.setBackground(new java.awt.Color(0, 51, 51));
         R3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         R3.setPreferredSize(new java.awt.Dimension(65, 540));
         R3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L7.setForeground(new java.awt.Color(255, 255, 255));
         name_L7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L7.setText("NAME");
-        R3.add(name_L7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel10.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel57.setText("AAAAAAA");
-        jPanel10.add(jLabel57);
-
-        jLabel58.setText("AAAAAAA");
-        jPanel10.add(jLabel58);
-
-        jLabel59.setText("AAAAAAA");
-        jPanel10.add(jLabel59);
-
-        jLabel60.setText("AAAAAAA");
-        jPanel10.add(jLabel60);
-
-        jLabel61.setText("AAAAAAA");
-        jPanel10.add(jLabel61);
-
-        jLabel62.setText("AAAAAAA");
-        jPanel10.add(jLabel62);
-
-        jLabel63.setText("AAAAAAA");
-        jPanel10.add(jLabel63);
-
-        R3.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        pointR3.setText("PUNTOS");
-        R3.add(pointR3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        R3.add(name_L7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barRight.add(R3);
 
-        R4.setBackground(new java.awt.Color(0, 102, 102));
+        R4.setBackground(new java.awt.Color(0, 51, 51));
         R4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         R4.setPreferredSize(new java.awt.Dimension(65, 540));
         R4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        name_L8.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        name_L8.setForeground(new java.awt.Color(255, 255, 255));
         name_L8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name_L8.setText("NAME");
-        R4.add(name_L8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel11.setLayout(new java.awt.GridLayout(2, 0, 25, 5));
-
-        jLabel66.setText("AAAAAAA");
-        jPanel11.add(jLabel66);
-
-        jLabel67.setText("AAAAAAA");
-        jPanel11.add(jLabel67);
-
-        jLabel68.setText("AAAAAAA");
-        jPanel11.add(jLabel68);
-
-        jLabel69.setText("AAAAAAA");
-        jPanel11.add(jLabel69);
-
-        jLabel70.setText("AAAAAAA");
-        jPanel11.add(jLabel70);
-
-        jLabel71.setText("AAAAAAA");
-        jPanel11.add(jLabel71);
-
-        jLabel72.setText("AAAAAAA");
-        jPanel11.add(jLabel72);
-
-        R4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 240, 120));
-
-        pointR4.setText("PUNTOS");
-        R4.add(pointR4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 50, 30));
+        R4.add(name_L8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         barRight.add(R4);
 
-        jPanel1.add(barRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 120, 240, 760));
+        jPanel1.add(barRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(1650, 170, 240, 600));
 
         rightManojo.setBackground(new java.awt.Color(51, 0, 0));
         rightManojo.setLayout(new java.awt.GridLayout(7, 0, 0, 20));
@@ -869,32 +510,32 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         });
         jPanel1.add(BARAJA, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 910, 130, 160));
 
-        turnAnnouncer.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        turnAnnouncer.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 48)); // NOI18N
         turnAnnouncer.setForeground(new java.awt.Color(255, 255, 255));
         turnAnnouncer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnAnnouncer.setText("TURNO DE X JUGADOR ");
         jPanel1.add(turnAnnouncer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 10, 450, 50));
 
-        cantCards.setFont(new java.awt.Font("Segoe UI Historic", 1, 48)); // NOI18N
+        cantCards.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         cantCards.setForeground(new java.awt.Color(255, 255, 255));
         cantCards.setText("0");
-        jPanel1.add(cantCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(1610, 870, 60, 50));
+        jPanel1.add(cantCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 880, 70, 30));
 
-        timerDisplay.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        timerDisplay.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 48)); // NOI18N
         timerDisplay.setForeground(new java.awt.Color(255, 255, 255));
         timerDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerDisplay.setText("SIGUIENTE TURNO EN");
-        jPanel1.add(timerDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 50));
+        jPanel1.add(timerDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 390, 50));
 
-        timerCont.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 36)); // NOI18N
+        timerCont.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 48)); // NOI18N
         timerCont.setForeground(new java.awt.Color(255, 255, 255));
         timerCont.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(timerCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 150, 50));
+        jPanel1.add(timerCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 130, 50));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("RESTANTES");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1460, 870, 140, 50));
+        jLabel1.setText("RESTANTES:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 870, 160, 50));
 
         cementerio.setBackground(new java.awt.Color(51, 0, 0));
         cementerio.setText("cementerio");
@@ -911,12 +552,27 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Carta");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1680, 960, 70, 50));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1840, 850, 70, 50));
 
         jLabel74.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel74.setForeground(new java.awt.Color(255, 255, 255));
         jLabel74.setText("Ultima ");
-        jPanel1.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 920, 90, 50));
+        jPanel1.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(1750, 850, 90, 50));
+
+        TITLE1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        TITLE1.setForeground(new java.awt.Color(255, 255, 255));
+        TITLE1.setText("EQUIPO 1");
+        jPanel1.add(TITLE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 190, 40));
+
+        TITLE2.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        TITLE2.setForeground(new java.awt.Color(255, 255, 255));
+        TITLE2.setText("EQUIPO 2");
+        jPanel1.add(TITLE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1670, 120, 190, 40));
+
+        TITLE3.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        TITLE3.setForeground(new java.awt.Color(255, 255, 255));
+        TITLE3.setText("EQUIPO 3");
+        jPanel1.add(TITLE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 910, 190, 40));
 
         getContentPane().add(jPanel1);
 
@@ -996,6 +652,7 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         min = 1;
         sec = 59;
         boardManager.cleanBorders(boardManager.board);
+        this.HighlightPlayer();
 
     }//GEN-LAST:event_BARAJAActionPerformed
 
@@ -1039,8 +696,21 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         }
     }
 
+    private static void clean(Component[] array) {
+        for (Component comp : array) {
+            if (comp instanceof JPanel) {
+                ((JPanel) comp).setBorder(null);
+            }
+        }
+    }
+
     public static void turnarEntreEquipos() {
         int cant = MenuPrincipal.cantEquipos;
+        clean(left.getComponents());
+        clean(right.getComponents());
+        if (cant == 3) {
+            clean(bottom.getComponents());
+        }
 
         if (cant == 2 && equipoTurn == 2) {
             equipoTurn = 1;
@@ -1055,12 +725,43 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         equipoTurn++;
     }
 
+    public void showPlayerCards() {
+        showPlayerCards(barLeft, MenuPrincipal.team1);
+        showPlayerCards(barRight, MenuPrincipal.team2);
+        if (MenuPrincipal.cantEquipos == 3) {
+            showPlayerCards(barBottom, MenuPrincipal.team3);
+        }
+    }
+
+    private void setMiniManojo(JPanel panel, Usuario player) {
+        ArrayList<JLabel> miniCards = this.stripLabels(panel);
+        for (int i = 0; i < player.getCartas().size(); i++) {
+            ImageIcon neocard = new ImageIcon("cardBack.png");
+            Image Scalecard = neocard.getImage().getScaledInstance(miniCards.get(i).getWidth(), miniCards.get(i).getHeight(), Image.SCALE_SMOOTH);
+            neocard = new ImageIcon(Scalecard);
+            miniCards.get(i).setIcon(neocard);
+
+        }
+    }
+
+    private JPanel specialStripPanel(JPanel pan) {
+        for (Component panel : pan.getComponents()) {
+            if (panel instanceof JPanel) {
+                return (JPanel) panel;
+            }
+
+        }
+        return null;
+    }
+
     private void showPlayerCards(JPanel team, ArrayList<Usuario> players) {
         ArrayList<JPanel> panels = this.stripPanels(team);
         for (int i = 0; i < players.size(); i++) {
             ArrayList<JLabel> currentPanelLabels = this.stripLabels(panels.get(i));
+            JPanel currentSubPanel = specialStripPanel(panels.get(i));
+//            this.setMiniManojo(currentSubPanel, players.get(i));
             this.setInfo(currentPanelLabels.get(0), players.get(i));
-            
+            panels.get(i).setVisible(true);
         }
     }
 
@@ -1089,7 +790,32 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
         if (label.getText().equals("NAME")) {
             label.setText(player.getUsername());
         }
-       
+
+    }
+
+    private void HighlightPlayer() {
+        switch (equipoTurn) {
+            case 1:
+                this.HighlightPlayer(barLeft);
+                break;
+            case 2:
+                this.HighlightPlayer(barRight);
+                break;
+            case 3:
+                this.HighlightPlayer(barBottom);
+                break;
+
+        }
+    }
+
+    private void HighlightPlayer(JPanel pan) {
+        ArrayList<JPanel> panels = this.stripPanels(pan);
+        for (int i = 0; i < panels.size(); i++) {
+            ArrayList<JLabel> currentPlayer = this.stripLabels(panels.get(i));
+            if (currentPlayer.get(0).getText().equals(enTurno.getUsername())) {
+                panels.get(i).setBorder(BorderFactory.createLineBorder(Color.YELLOW, 5));
+            }
+        }
     }
     /**
      * @param args the command line arguments
@@ -1143,6 +869,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel R2;
     private javax.swing.JPanel R3;
     private javax.swing.JPanel R4;
+    private javax.swing.JLabel TITLE1;
+    private javax.swing.JLabel TITLE2;
+    private javax.swing.JLabel TITLE3;
     private javax.swing.JButton b1;
     private javax.swing.JButton b2;
     private javax.swing.JButton b3;
@@ -1156,89 +885,9 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel cantCards;
     private javax.swing.JButton cementerio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel147;
-    private javax.swing.JLabel jLabel148;
-    private javax.swing.JLabel jLabel149;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel150;
-    private javax.swing.JLabel jLabel151;
-    private javax.swing.JLabel jLabel152;
-    private javax.swing.JLabel jLabel153;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JButton l1;
     private javax.swing.JButton l2;
     private javax.swing.JButton l3;
@@ -1257,16 +906,6 @@ public class BOARD extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel name_L7;
     private javax.swing.JLabel name_L8;
     private javax.swing.JLabel name_L9;
-    private javax.swing.JLabel point1;
-    private javax.swing.JLabel point2;
-    private javax.swing.JLabel point3;
-    private javax.swing.JLabel point4;
-    private javax.swing.JLabel pointB1;
-    private javax.swing.JLabel pointB2;
-    private javax.swing.JLabel pointR1;
-    private javax.swing.JLabel pointR2;
-    private javax.swing.JLabel pointR3;
-    private javax.swing.JLabel pointR4;
     private javax.swing.JButton r1;
     private javax.swing.JButton r2;
     private javax.swing.JButton r3;

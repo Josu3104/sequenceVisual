@@ -53,22 +53,14 @@ public class Mazo {
     public final void setDeck() {
 
         File[] m = manojo.listFiles();
-        File[] j = jacks.listFiles();
-        File[] s = special.listFiles();
+
         ArrayList<String> newM = new ArrayList();
-        ArrayList<String> newJ = new ArrayList();
-        ArrayList<String> newS = new ArrayList();
 
         newM = stripCardsFromDir(m, newM);
-        newJ = stripCardsFromDir(j, newJ);
-        newS = stripCardsFromDir(s, newS);
 
         for (int i = 0; i < 2; i++) {
             Collections.addAll(deck, newM.toArray(String[]::new));
-            Collections.addAll(deck, newJ.toArray(String[]::new));
-            if (MenuPrincipal.specialsPermited) {
-                Collections.addAll(deck, newS.toArray(String[]::new));
-            }
+
         }
 
     }
@@ -76,7 +68,7 @@ public class Mazo {
     private ArrayList<String> stripCardsFromDir(File[] array, ArrayList<String> arrayTwo) {
         for (File name : array) {
             arrayTwo.add(name.getName());
-            System.out.println(name.getName());
+
         }
         return arrayTwo;
     }

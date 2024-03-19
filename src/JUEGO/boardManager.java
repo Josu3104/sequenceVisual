@@ -20,13 +20,15 @@ import javax.swing.JPanel;
  * @author Josue Gavidia
  */
 public class boardManager {
-
+    
     public static String WINNER;
     public static int teamWin;
     private int sequencesPerTeam[];
     public static boolean SEQUENCE;
     public static Date fechaGANE;
-
+    private cartita selectedBeforeMove;
+    private boolean improv;
+    
     public static cartita[][] board = new cartita[10][10];
     String[][] cartas = {
         {"corner", "10S", "QS", "KS", "AS", "2D", "3D", "4D", "5D", "corner",},
@@ -34,28 +36,29 @@ public class boardManager {
         {"8S", "QH", "7D", "8D", "9D", "10D", "QD", "KD", "2H", "7D",},
         {"7S", "KH", "6D", "2C", "AH", "KH", "QH", "AD", "2S", "8D",},
         {"6S", "AH", "5D", "3C", "4H", "3H", "10H", "AC", "3S", "9D",},
-        {"5S", "2C", "4D", "4S", "5H", "2H", "9H", "KS", "4S", "10D",},
+        {"5S", "2C", "4D", "4S", "5H", "2H", "9H", "KC", "4S", "10D",},
         {"4S", "3C", "3D", "5C", "6H", "7H", "8H", "QC", "5S", "QD",},
         {"3S", "4C", "2D", "6C", "7C", "8C", "9C", "10C", "6S", "KD",},
         {"2S", "5C", "AS", "KS", "QS", "10S", "9S", "8S", "7S", "AD",},
         {"corner", "6C", "7C", "8C", "9C", "10C", "QC", "KC", "AC", "corner",}};
-
+    
     public boardManager() {
-
+        
         SEQUENCE = false;
         sequencesPerTeam = new int[MenuPrincipal.cantEquipos];
+        improv = false;
     }
-
+    
     public void initBoard(JPanel pan) {
-
+        
         for (int row = 0; row < 10; row++) {
             for (int col = 0; col < 10; col++) {
                 board[row][col] = new cartita(row, col, cartas[row][col]);
-
+                
                 board[row][col].setBounds((pan.getWidth() / 10) * col, (pan.getHeight() / 10) * row, (pan.getWidth() / 10), (pan.getHeight() / 10));
-
+                
                 board[row][col].setText(null);
-
+                
                 try {
                     //RESIZER DE IMAGENES
                     String imagePath = "CARDS/" + cartas[row][col] + ".png";
@@ -63,7 +66,7 @@ public class boardManager {
                     Image Scalecard = neocard.getImage().getScaledInstance(board[row][col].getWidth(), board[row][col].getHeight(), Image.SCALE_SMOOTH);
                     neocard = new ImageIcon(Scalecard);
                     board[row][col].setIcon(neocard);
-
+                    
                 } catch (Exception e) {
                     System.out.println("Muere aqui" + row + " " + col);
                     System.out.println(e.getMessage());
@@ -75,8 +78,9 @@ public class boardManager {
                     int Columna = ((cartita) e.getSource()).getCol();
                     System.out.println(BOARD.enTurno.getTeam());
                     cleanBorders(board);
+                  
                     String actualCardName = board[Fila][Columna].getCardName() + ".png";
-
+                    
                     if (Mazo.canPlaceToken) {
                         if (actualCardName.equals(Mazo.auxLastPcard.getName())) {
 
@@ -94,7 +98,7 @@ public class boardManager {
                                 if (this.checkHorizontal(Fila, Columna) || this.checkVertical(Fila, Columna) || this.checkDiagonal(Fila, Columna)) {
                                     int teamNumber = board[Fila][Columna].getTeam();
                                     sequencesPerTeam[teamNumber]++;
-
+                                    
                                     for (int i = 0; i < MenuPrincipal.cantEquipos; i++) {
                                         if (sequencesPerTeam[i] >= 2) {
                                             SEQUENCE = true;
@@ -104,17 +108,17 @@ public class boardManager {
                                             System.out.println("TERMINA EL JUEGO");
                                             return;
                                         }
-
+                                        
                                     }
                                     Mazo.canPlaceToken = false;
                                 }
                             }
-
+                            
                         } else if (isCardJack(Mazo.auxLastPcard.getName())) {
 
                             //SI ES CARTA JACK
                             if (this.getJackEye(Mazo.auxLastPcard) == 1) {
-
+                                
                                 if (board[Fila][Columna].getFichita().getIcon() != null) {
                                     this.OneEyeJackAction(Mazo.auxLastPcard, board[Fila][Columna]);
                                 } else {
@@ -129,22 +133,45 @@ public class boardManager {
                                     return;
                                 }
                             }
-                             Mazo.canPlaceToken = false;
+                            Mazo.canPlaceToken = false;
+                        } else if (isCardSpecial(Mazo.auxLastPcard.getName())&&MenuPrincipal.specialsPermited) {
+                            if(!improv){
+                                JOptionPane.showMessageDialog(null, "PODER: Puede mover una ficha propia a cualquier otra casilla");
+                            }
+                            //Si es especial
+                            int powerType = this.getPoder(Mazo.auxLastPcard.getName());
+                            if (powerType == 1 || powerType == 2 || powerType == 3) {
+                                if(!improv){
+                                    System.out.println("Se toma la ficha a mover");
+                                     this.moveFichaFirstStep(board[Fila][Columna]);
+                                      improv = true;
+                                      return;
+                                }
+                               
+                                if(improv){
+                                   this.moveFichaSecondStep(board[Fila][Columna]);
+                                    improv = false;
+                                }
+                               
+                               
+                            }
+                            
+                            Mazo.canPlaceToken = false;
                         } else {
                             JOptionPane.showMessageDialog(null, "SELECCIONE LA CASILLA SEÑALADA");
                             return;
                         }
-                       
+                        
                     } else {
                         JOptionPane.showMessageDialog(null, "SELECCIONE UNA CARTA DE SU MANOJO");
                         return;
                     }
-                     BOARD.baraja.doClick();
+                    BOARD.baraja.doClick();
                 }
                 );
-
+                
                 pan.add(board[row][col]);
-
+                
             }
         }
         board[0][0].setChecked(true);
@@ -156,7 +183,7 @@ public class boardManager {
         board[9][9].setChecked(true);
         board[9][9].setEnabled(false);
     }
-
+    
     private boolean takeCard(int row, int col) {
         if (board[row][col].getTakenBy() == null) {
             board[row][col].claimCard(BOARD.enTurno.getUsername(), BOARD.enTurno.getTeam());
@@ -170,31 +197,31 @@ public class boardManager {
     private boolean validPos(int row, int col) {
         return row >= 0 && row < board.length && col >= 0 && col < board.length;
     }
-
+    
     public void initPlayerCards(JPanel left, JPanel right, JPanel bottom) {
         Component[] cards = left.getComponents();
         Component[] cards2 = right.getComponents();
         Component[] cards3 = bottom.getComponents();
-
+        
         for (Component a : cards) {
             if (a instanceof JPanel) {
                 a.setVisible(false);
             }
         }
-
+        
         for (Component a : cards2) {
             if (a instanceof JPanel) {
                 a.setVisible(false);
             }
         }
-
+        
         for (Component a : cards3) {
             if (a instanceof JPanel) {
                 a.setVisible(false);
             }
         }
     }
-
+    
     private ImageIcon getTokenColor() {
         switch (BOARD.equipoTurn) {
             case 1:
@@ -206,7 +233,7 @@ public class boardManager {
         }
         return null;
     }
-
+    
     private ImageIcon getTokenColor(String color) {
         switch (color) {
             case "ROJO":
@@ -220,7 +247,7 @@ public class boardManager {
         }
         return null;
     }
-
+    
     public static void cleanBorders(cartita[][] array) {
         for (int row = 0; row < boardManager.board.length; row++) {
             for (int col = 0; col < boardManager.board.length; col++) {
@@ -228,11 +255,109 @@ public class boardManager {
             }
         }
     }
+    
+    private boolean isCardSpecial(String name) {
+        return name.charAt(0) == 'Q' || name.charAt(0) == 'K';
+    }
+    
+    private String getSpecialName(String auxCard) {
+        String formated = auxCard.substring(0, auxCard.lastIndexOf('.'));
+        switch (formated) {
+            case "KS":
+                return "REY DE PICAS";
+            case "KC":
+                return "REY DE TREBOLES";
+            case "KH":
+                return "REY DE CORAZONES";
+            case "KD":
+                return "REY DE DIAMANTES";
+            case "QS":
+                return "REINA DE PICAS";
+            case "QC":
+                return "REINA DE TREBOLES";
+            case "QH":
+                return "REINA DE CORAZONES";
+            case "QD":
+                return "REINA DE DIAMANTES";
+            
+        }
+        return null;
+    }
+    
+    private int getPoder(String selectedCard) {
+        String id = this.getSpecialName(selectedCard);
+        for (int i = 0; i < MenuPrincipal.specialCARD.size(); i++) {
+            if (id.equals(MenuPrincipal.specialCARD.get(i))) {
+                if (MenuPrincipal.specialCARD.get(i + 1) instanceof Integer) {
+                    int poder = (Integer) MenuPrincipal.specialCARD.get(i + 1);
+                    switch (poder) {
+                        case 1:
+                            return 1;
+                        case 2:
+                            return 1;
+                        case 3:
+                            return 1;
+                    }
+                }
+                
+            }
+        }
+        return -1;
+    }
+    
+    private void moveFichaFirstStep(cartita carta) {
+        if (carta.isChecked() && carta.getTeam() == BOARD.enTurno.getTeam()) {
+            this.selectedBeforeMove=carta;
+        }else{
+            JOptionPane.showMessageDialog(null, "SELECCIONE UNA FICHA PERTENECIENTE A SU EQUIPO");
+        }
+        
+    }
 
+    private String provisional1() {
+        switch (BOARD.equipoTurn) {
+            case 1:
+                return MenuPrincipal.chosenColorT1;
+            case 2:
+                return MenuPrincipal.chosenColorT2;
+            case 3:
+                return MenuPrincipal.chosenColorT3;
+        }
+        return null;
+    }
+    
+    private String provisional2() {
+        switch (provisional1()) {
+            case "ROJO":
+                return "TOKENS/redToken.png";
+            case "VERDE":
+                return "TOKENS/greenToken.png";
+            case "AMARILLO":
+                return "TOKENS/yellowToken.png";
+            case "AZUL":
+                return "TOKENS/blueToken.png";
+        }
+        return null;
+    }
+
+    private void moveFichaSecondStep(cartita carta) {
+        carta.getFichita().setIcon(Mazo.imageResizer(provisional2(), carta));
+        carta.setChecked(true);
+        carta.setAlreadySequenced(false);
+        carta.setTakenBy(BOARD.enTurno.getUsername());
+        carta.setTeam(BOARD.enTurno.getTeam());
+        this.selectedBeforeMove.getFichita().setIcon(null);
+        this.selectedBeforeMove.setTeam(0);
+        this.selectedBeforeMove.setTakenBy(null);
+        this.selectedBeforeMove.setChecked(false);
+        this.selectedBeforeMove.setAlreadySequenced(false);
+        
+    }
+    
     private boolean isCardJack(String name) {
         return name.charAt(0) == 'J';
     }
-
+    
     private int getJackEye(JButton lastCard) {
         String namae = lastCard.getName();
         System.out.println(namae);
@@ -252,44 +377,44 @@ public class boardManager {
             quitarFicha(boardButton);
         }
     }
-
+    
     private void TwoEyeJackAction(JButton lastCard, cartita boardButton) {
         if (getJackEye(lastCard) == 2) {
             boardButton.setEnabled(false);
             boardButton.setTakenBy(BOARD.enTurno.getUsername());
             boardButton.setTeam(BOARD.enTurno.getTeam());
         }
-
+        
     }
-
+    
     private void quitarFicha(cartita boardB) {
         boardB.setTakenBy(null);
         boardB.setTeam(0);
         boardB.setAlreadySequenced(false);
         boardB.setChecked(false);
         boardB.getFichita().setIcon(null);
-        Mazo.canPlaceToken=false;
+        Mazo.canPlaceToken = false;
     }
 
     //EL INFAME "GANE"
     private boolean checkHorizontal(int row, int col) {
         return checkXleft(row, col) || checkXright(row, col);
     }
-
+    
     private boolean checkVertical(int row, int col) {
         return checkYUp(row, col) || checkYDown(row, col);
     }
-
+    
     private boolean checkDiagonal(int row, int col) {
         return this.checkDiagNE(row, col) || this.checkDiagSW(row, col) || this.checkDiagNW(row, col) || this.checkDiagSE(row, col);
     }
-
+    
     private boolean checkXright(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
-
+            
             for (int i = 0; i < 5; i++) {
-
+                
                 if (isValid(row, col + i)) {
                     test.add(board[row][col + i]);
                     System.out.println("card ADDED");
@@ -301,11 +426,11 @@ public class boardManager {
             return checkIndividualArray(test);
         } else {
             System.out.println("NOT EVEN THE FIRST ONE IS CHECKED");
-
+            
         }
         return false;
     }
-
+    
     private boolean checkXleft(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -324,7 +449,7 @@ public class boardManager {
         }
         return false;
     }
-
+    
     private boolean checkYUp(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -343,7 +468,7 @@ public class boardManager {
         }
         return false;
     }
-
+    
     private boolean checkYDown(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -362,12 +487,12 @@ public class boardManager {
         }
         return false;
     }
-
+    
     private boolean checkIndividualArray(ArrayList<cartita> array) {
         int i = 0;
         cartita primera = array.get(0);
         for (cartita card : array) {
-
+            
             if ((card.isChecked() && !card.isAlreadySequenced() && card.getTeam() == primera.getTeam()) || card.getCardName().equals("corner")) {
                 i++;
                 System.out.println("SE SUMA I++");
@@ -375,11 +500,11 @@ public class boardManager {
         }
         return i == 5;
     }
-
+    
     private boolean isValid(int row, int col) {
         return row >= 0 && row < board.length && col >= 0 && col < board.length;
     }
-
+    
     private boolean checkDiagNW(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -398,7 +523,7 @@ public class boardManager {
         }
         return false;
     }
-
+    
     private boolean checkDiagSE(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -417,7 +542,7 @@ public class boardManager {
         }
         return false;
     }
-
+    
     private boolean checkDiagNE(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -436,7 +561,7 @@ public class boardManager {
         }
         return false;
     }
-
+    
     private boolean checkDiagSW(int row, int col) {
         ArrayList<cartita> test = new ArrayList<>();
         if (board[row][col].isChecked() && !board[row][col].isAlreadySequenced()) {
@@ -455,5 +580,5 @@ public class boardManager {
         }
         return false;
     }
-
+    
 }

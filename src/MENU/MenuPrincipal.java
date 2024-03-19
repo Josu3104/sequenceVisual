@@ -10,12 +10,16 @@ import USUARIO.Usuario;
 import USUARIO.historial;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -39,6 +43,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static boolean specialsPermited;
     public static String chosenColorT1, chosenColorT2, chosenColorT3;
     private String Loggeado;
+    private String selectedSpecial;
+    public static ArrayList<Object> specialCARD;
 
     public MenuPrincipal() {
 
@@ -73,6 +79,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         specialsPermited = false;
         cantEquipos = setCantidadEquipos(cantPlayersSettings);
         fechaNeitor = new SimpleDateFormat("dd/MM/yyyy");
+        specialCARD = new ArrayList<>();
 
     }
 
@@ -133,6 +140,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cantPCombo = new javax.swing.JComboBox<>();
         setCantJugadores = new javax.swing.JButton();
         RETURN = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cardShower = new javax.swing.JLabel();
+        specialChooser = new javax.swing.JComboBox<>();
+        powerChooser = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        setPOWER = new javax.swing.JButton();
         REPORTS_TAB = new javax.swing.JPanel();
         playerDispReports = new javax.swing.JLabel();
         dateCreatedReports = new javax.swing.JLabel();
@@ -149,6 +163,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MAIN_MENU.setPreferredSize(new java.awt.Dimension(1920, 1080));
         MAIN_MENU.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        PLAY.setBackground(new java.awt.Color(0, 0, 0));
         PLAY.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         PLAY.setForeground(new java.awt.Color(255, 255, 255));
         PLAY.setText("JUGAR");
@@ -159,6 +174,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         MAIN_MENU.add(PLAY, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 330, 90));
 
+        config.setBackground(new java.awt.Color(0, 0, 0));
         config.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         config.setForeground(new java.awt.Color(255, 255, 255));
         config.setText("CONFIGURACION");
@@ -169,6 +185,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         MAIN_MENU.add(config, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 330, 90));
 
+        reportes.setBackground(new java.awt.Color(0, 0, 0));
         reportes.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         reportes.setForeground(new java.awt.Color(255, 255, 255));
         reportes.setText("REPORTES");
@@ -413,14 +430,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Ravie", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("CANTIDAD DE JUGADORES");
-        CONFIG_TAB.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 850, 90));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("CARTAS ESPECIALES");
+        CONFIG_TAB.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 100, 850, 90));
 
         cantPCombo.setBackground(new java.awt.Color(0, 102, 102));
         cantPCombo.setFont(new java.awt.Font("Segoe UI Symbol", 1, 36)); // NOI18N
         cantPCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "6", "8" }));
         cantPCombo.setSelectedIndex(2);
-        CONFIG_TAB.add(cantPCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 780, 70));
+        CONFIG_TAB.add(cantPCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 780, 70));
 
         setCantJugadores.setBackground(new java.awt.Color(153, 0, 0));
         setCantJugadores.setText("HECHO");
@@ -429,7 +447,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 setCantJugadoresActionPerformed(evt);
             }
         });
-        CONFIG_TAB.add(setCantJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 320, 80));
+        CONFIG_TAB.add(setCantJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 590, 320, 80));
 
         RETURN.setFont(new java.awt.Font("Ravie", 1, 24)); // NOI18N
         RETURN.setText("REGRESAR");
@@ -439,6 +457,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         CONFIG_TAB.add(RETURN, new org.netbeans.lib.awtextra.AbsoluteConstraints(1560, 960, 330, 90));
+
+        jLabel5.setFont(new java.awt.Font("Ravie", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("CANTIDAD DE JUGADORES");
+        CONFIG_TAB.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 90));
+
+        cardShower.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CONFIG_TAB.add(cardShower, new org.netbeans.lib.awtextra.AbsoluteConstraints(1360, 190, 220, 310));
+
+        specialChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "REY DE PICAS", "REY DE CORAZONES", "REY DE DIAMANTES", "REY DE TREBOLES", "REINA DE PICAS", "REINA DE CORAZONES", "REINA DE DIAMANTES", "REINA DE TREBOLES" }));
+        specialChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                specialChooserActionPerformed(evt);
+            }
+        });
+        CONFIG_TAB.add(specialChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 610, 200, 60));
+
+        powerChooser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MOVER FICHA" }));
+        powerChooser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                powerChooserActionPerformed(evt);
+            }
+        });
+        CONFIG_TAB.add(powerChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(1580, 610, 220, 60));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("PODER");
+        CONFIG_TAB.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1610, 560, 160, 40));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("CARTA");
+        CONFIG_TAB.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 560, 160, 40));
+
+        setPOWER.setText("GUARDAR");
+        setPOWER.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                setPOWERActionPerformed(evt);
+            }
+        });
+        CONFIG_TAB.add(setPOWER, new org.netbeans.lib.awtextra.AbsoluteConstraints(1370, 760, 230, 70));
 
         REPORTS_TAB.setBackground(new java.awt.Color(51, 0, 0));
         REPORTS_TAB.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -566,8 +628,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             playersThreeSc.setVisible(true);
             tokenColor3.setVisible(true);
             rem3.setVisible(true);
-        }else{
-             EQUIPO3.setVisible(false);
+        } else {
+            EQUIPO3.setVisible(false);
             playersThreeSc.setVisible(false);
             tokenColor3.setVisible(false);
             rem3.setVisible(false);
@@ -753,7 +815,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
     private void configActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configActionPerformed
+        String[] specials = {"REY DE PICAS", "REY DE CORAZONES", "REY DE DIAMANTES", "REY DE TREBOLES", "REINA DE PICAS", "REINA DE CORAZONES", "REINA DE DIAMANTES", "REINA DE TREBOLES"};
         this.MAIN_MENU.setVisible(false);
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addAll(Arrays.asList(specials));
+        this.specialChooser.setModel(model);
         this.CONFIG_TAB.setVisible(true);
     }//GEN-LAST:event_configActionPerformed
 
@@ -786,10 +852,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setRealTeams() throws IOException, ClassNotFoundException {
         setRealTeams(p1, team1, 1);
         setRealTeams(p2, team2, 2);
-        if(cantEquipos==3){
-             setRealTeams(p3, team3, 3);
+        if (cantEquipos == 3) {
+            setRealTeams(p3, team3, 3);
         }
-       
+
     }
 
     private void setRealTeams(ArrayList<String> players, ArrayList<Usuario> realTeam, int team) throws IOException, ClassNotFoundException {
@@ -828,10 +894,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String item = (String) this.cantPCombo.getSelectedItem();
         int cant = Integer.parseInt(item);
         cantPlayersSettings = cant;
-        if(cantPlayersSettings ==3||cantPlayersSettings==6){
-            cantEquipos=3;
-        }else{
-            cantEquipos=2;
+        if (cantPlayersSettings == 3 || cantPlayersSettings == 6) {
+            cantEquipos = 3;
+        } else {
+            cantEquipos = 2;
         }
         setCantJugadores.setBackground(Color.GREEN);
         System.out.println("CANT JUGADORES : " + cantPlayersSettings);
@@ -855,18 +921,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_logOUTActionPerformed
 
     private void backToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToLoginActionPerformed
-       this.REG_TAB.setVisible(false);
-       this.LOG_IN.setVisible(true);
+        this.REG_TAB.setVisible(false);
+        this.LOG_IN.setVisible(true);
     }//GEN-LAST:event_backToLoginActionPerformed
 
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
-       this.PLAY_TAB.setVisible(false);
-       this.MAIN_MENU.setVisible(true);
+        this.PLAY_TAB.setVisible(false);
+        this.MAIN_MENU.setVisible(true);
     }//GEN-LAST:event_backToMenuActionPerformed
 
     private void backToMENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMENUActionPerformed
-      this.REPORTS_TAB.setVisible(false);
-      this.MAIN_MENU.setVisible(true);
+        this.REPORTS_TAB.setVisible(false);
+        this.MAIN_MENU.setVisible(true);
     }//GEN-LAST:event_backToMENUActionPerformed
 
     private void RETURNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RETURNActionPerformed
@@ -874,6 +940,80 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.MAIN_MENU.setVisible(true);
         this.setCantJugadores.setBackground(Color.RED);
     }//GEN-LAST:event_RETURNActionPerformed
+
+    private void specialChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specialChooserActionPerformed
+        String item;
+        if (specialChooser.getSelectedItem() != null) {
+            item = specialChooser.getSelectedItem().toString();
+        } else {
+            JOptionPane.showMessageDialog(null, "SE HAN CONFIGURADO TODAS LAS CARTAS");
+            return;
+        }
+
+        this.selectedSpecial = item;
+        switch (selectedSpecial) {
+            case "REY DE PICAS":
+                configSpecialIcon("MANOJO/KS.png");
+                break;
+            case "REY DE CORAZONES":
+                configSpecialIcon("MANOJO/KH.png");
+                break;
+            case "REY DE DIAMANTES":
+                configSpecialIcon("MANOJO/KD.png");
+                break;
+            case "REY DE TREBOLES":
+                configSpecialIcon("MANOJO/KC.png");
+                break;
+            case "REINA DE PICAS":
+                configSpecialIcon("MANOJO/QS.png");
+                break;
+            case "REINA DE CORAZONES":
+                configSpecialIcon("MANOJO/QH.png");
+                break;
+            case "REINA DE DIAMANTES":
+                configSpecialIcon("MANOJO/QD.png");
+                break;
+            case "REINA DE TREBOLES":
+                configSpecialIcon("MANOJO/QC.png");
+                break;
+
+        }
+        System.out.println(item);
+    }//GEN-LAST:event_specialChooserActionPerformed
+
+    private void setPOWERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setPOWERActionPerformed
+        int power = 0;
+        switch (this.powerChooser.getSelectedIndex()) {
+            case 0:
+                power = 1;
+                break;
+
+            case 1:
+                power = 1;
+                break;
+            case 2:
+                power = 1;
+                break;
+
+        }
+         specialCARD.add(this.selectedSpecial);
+        specialCARD.add(power);
+        this.specialChooser.removeItem(this.specialChooser.getSelectedItem());
+        specialsPermited = true;
+
+
+    }//GEN-LAST:event_setPOWERActionPerformed
+
+    private void powerChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_powerChooserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_powerChooserActionPerformed
+    private void configSpecialIcon(String card) {
+        ImageIcon neoFicha = new ImageIcon(card);
+        Image Scalecard = neoFicha.getImage().getScaledInstance(this.cardShower.getWidth(), this.cardShower.getHeight(), Image.SCALE_SMOOTH);
+        neoFicha = new ImageIcon(Scalecard);
+        this.cardShower.setIcon(neoFicha);
+        cardShower.repaint();
+    }
 
     private void initReports(String userEnSesion) throws IOException, ClassNotFoundException {
         Usuario Logged = ManagerUsuarios.SearchUser(userEnSesion);
@@ -972,6 +1112,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton backToMENU;
     private javax.swing.JButton backToMenu;
     private javax.swing.JComboBox<String> cantPCombo;
+    private javax.swing.JLabel cardShower;
     private javax.swing.JButton checkOut;
     private javax.swing.JTextField confPass;
     private javax.swing.JButton config;
@@ -983,7 +1124,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logOUT;
@@ -997,12 +1141,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JList<String> playersTwo;
     private javax.swing.JScrollPane playersTwoSc;
     private javax.swing.JScrollPane playesOneSc;
+    private javax.swing.JComboBox<String> powerChooser;
     private javax.swing.JButton reg;
     private javax.swing.JButton rem1;
     private javax.swing.JButton rem2;
     private javax.swing.JButton rem3;
     private javax.swing.JButton reportes;
     private javax.swing.JButton setCantJugadores;
+    private javax.swing.JButton setPOWER;
+    private javax.swing.JComboBox<String> specialChooser;
     private javax.swing.JComboBox<String> tokenColor1;
     private javax.swing.JComboBox<String> tokenColor2;
     private javax.swing.JComboBox<String> tokenColor3;
